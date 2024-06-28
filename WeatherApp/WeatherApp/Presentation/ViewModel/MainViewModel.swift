@@ -11,6 +11,6 @@ import Observation
 @Observable 
 class MainViewModel {
     func getCurrentWeather() {
-        print("ASD")
+        
     }
 }

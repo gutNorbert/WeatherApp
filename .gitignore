@@ -2,8 +2,6 @@
 .DS_Store
 build/
 DerivedData/
-*.xcworkspace
-!default.xcworkspace
 xcuserdata/
 *.xccheckout
 *.moved-aside

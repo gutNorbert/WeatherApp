@@ -9,6 +9,11 @@
 /* Begin PBXBuildFile section */
 		0903606F2C2D9DFA00B938F8 /* DomainLayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 090360662C2D9DFA00B938F8 /* DomainLayer.framework */; };
 		090360742C2D9DFA00B938F8 /* DomainLayerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090360732C2D9DFA00B938F8 /* DomainLayerTests.swift */; };
+		B1519F642C2EDF640043329F /* CurrentWeatherRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1519F632C2EDF640043329F /* CurrentWeatherRepositoryProtocol.swift */; };
+		B1519F6F2C2EE6F10043329F /* GetCurrentWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1519F6E2C2EE6F10043329F /* GetCurrentWeather.swift */; };
+		B1519F742C2EE7AA0043329F /* CurrentWeatherRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1519F732C2EE7AA0043329F /* CurrentWeatherRequest.swift */; };
+		B1519F772C2EEEDE0043329F /* CurrentWeatherResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1519F762C2EEEDE0043329F /* CurrentWeatherResponse.swift */; };
+		B1C853282C32ECFF0039F618 /* UseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1C853272C32ECFF0039F618 /* UseCase.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -25,6 +30,12 @@
 		090360662C2D9DFA00B938F8 /* DomainLayer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DomainLayer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0903606E2C2D9DFA00B938F8 /* DomainLayerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DomainLayerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		090360732C2D9DFA00B938F8 /* DomainLayerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainLayerTests.swift; sourceTree = "<group>"; };
+		B1519F632C2EDF640043329F /* CurrentWeatherRepositoryProtocol.swift */ = {isa = PBXFileReference; indentWidth = 4; lastKnownFileType = sourcecode.swift; path = CurrentWeatherRepositoryProtocol.swift; sourceTree = "<group>"; tabWidth = 4; };
+		B1519F6E2C2EE6F10043329F /* GetCurrentWeather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCurrentWeather.swift; sourceTree = "<group>"; };
+		B1519F732C2EE7AA0043329F /* CurrentWeatherRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentWeatherRequest.swift; sourceTree = "<group>"; };
+		B1519F762C2EEEDE0043329F /* CurrentWeatherResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentWeatherResponse.swift; sourceTree = "<group>"; };
+		B1519F792C2EEF500043329F /* DataLayer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DataLayer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B1C853272C32ECFF0039F618 /* UseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseCase.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,8 +60,12 @@
 		0903605C2C2D9DFA00B938F8 = {
 			isa = PBXGroup;
 			children = (
+				B1519F702C2EE76A0043329F /* Entity */,
+				B1519F6D2C2EE6D50043329F /* UseCase */,
+				B1519F5E2C2EDF030043329F /* Protocol */,
 				090360722C2D9DFA00B938F8 /* DomainLayerTests */,
 				090360672C2D9DFA00B938F8 /* Products */,
+				B1519F782C2EEF500043329F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -69,6 +84,56 @@
 				090360732C2D9DFA00B938F8 /* DomainLayerTests.swift */,
 			);
 			path = DomainLayerTests;
+			sourceTree = "<group>";
+		};
+		B1519F5E2C2EDF030043329F /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				B1519F752C2EE9D10043329F /* UseCase */,
+				B1519F5F2C2EDF190043329F /* Repository */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		B1519F5F2C2EDF190043329F /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				B1519F632C2EDF640043329F /* CurrentWeatherRepositoryProtocol.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		B1519F6D2C2EE6D50043329F /* UseCase */ = {
+			isa = PBXGroup;
+			children = (
+				B1519F6E2C2EE6F10043329F /* GetCurrentWeather.swift */,
+			);
+			path = UseCase;
+			sourceTree = "<group>";
+		};
+		B1519F702C2EE76A0043329F /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				B1519F732C2EE7AA0043329F /* CurrentWeatherRequest.swift */,
+				B1519F762C2EEEDE0043329F /* CurrentWeatherResponse.swift */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		B1519F752C2EE9D10043329F /* UseCase */ = {
+			isa = PBXGroup;
+			children = (
+				B1C853272C32ECFF0039F618 /* UseCase.swift */,
+			);
+			path = UseCase;
+			sourceTree = "<group>";
+		};
+		B1519F782C2EEF500043329F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B1519F792C2EEF500043329F /* DataLayer.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -132,6 +197,7 @@
 				TargetAttributes = {
 					090360652C2D9DFA00B938F8 = {
 						CreatedOnToolsVersion = 15.2;
+						LastSwiftMigration = 1520;
 					};
 					0903606D2C2D9DFA00B938F8 = {
 						CreatedOnToolsVersion = 15.2;
@@ -179,6 +245,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B1C853282C32ECFF0039F618 /* UseCase.swift in Sources */,
+				B1519F742C2EE7AA0043329F /* CurrentWeatherRequest.swift in Sources */,
+				B1519F772C2EEEDE0043329F /* CurrentWeatherResponse.swift in Sources */,
+				B1519F642C2EDF640043329F /* CurrentWeatherRepositoryProtocol.swift in Sources */,
+				B1519F6F2C2EE6F10043329F /* GetCurrentWeather.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -329,6 +400,7 @@
 		090360792C2D9DFA00B938F8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -339,6 +411,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 17;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -351,6 +424,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -359,6 +433,7 @@
 		0903607A2C2D9DFA00B938F8 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -369,6 +444,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 17;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -389,6 +465,7 @@
 		0903607C2C2D9DFA00B938F8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -404,6 +481,7 @@
 		0903607D2C2D9DFA00B938F8 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;

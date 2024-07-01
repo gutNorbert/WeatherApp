@@ -8,13 +8,14 @@
 import Foundation
 import Factory
 import Combine
+import DomainLayer
 
 class CurrentWeatherRemoteDataSource: CurrentWeatherRemoteDataSourceProtocol {
     private let apiClient = Container.shared.apiClient.resolve()
     
-    func fetchCurrentWeather(with request: CurrentWeatherRequest) -> Future<CurrentWeatherResponse, RequestError> {
+    func fetchCurrentWeather(with request: CurrentWeatherRequestDTO) -> Future<CurrentWeatherResponseDTO, RequestError> {
         apiClient.sendRequest(endpoint: WeatherEndpoint.currentWeather,
-                              responseModel: CurrentWeatherResponse.self,
+                              responseModel: CurrentWeatherResponseDTO.self,
                               queries: [URLQueryItem(name: "lat", value: "44.34"),
                                         URLQueryItem(name: "lon", value: "10.99")])
         

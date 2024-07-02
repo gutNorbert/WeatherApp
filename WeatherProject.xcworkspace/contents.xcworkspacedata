@@ -7,11 +7,5 @@
       <FileRef
          location = "group:WeatherApp.xcodeproj">
       </FileRef>
-      <FileRef
-         location = "group:../DomainLayer/DomainLayer.xcodeproj">
-      </FileRef>
-      <FileRef
-         location = "group:../DataLayer/DataLayer.xcodeproj">
-      </FileRef>
    </Group>
 </Workspace>

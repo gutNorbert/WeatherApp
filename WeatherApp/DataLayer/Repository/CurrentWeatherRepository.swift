@@ -8,17 +8,13 @@
 import Foundation
 import DomainLayer
 import Combine
+import Factory
 
 struct CurrentWeatherRepository: CurrentWeatherRepositoryProtocol{
-    
-    private let datasource: CurrentWeatherRemoteDataSource
-    
-    init(datasource: CurrentWeatherRemoteDataSource) {
-        self.datasource = datasource
-    }
+    private let remoteDataSource = Container.shared.currentWeatherRemoteDataSource.resolve()
     
     func getCurrentWeather(currentWeatherRequest: CurrentWeatherRequest) -> AnyPublisher<CurrentWeatherResponse, Never> {
-        datasource.fetchCurrentWeather(with: CurrentWeatherRequestDTO.from(weather: currentWeatherRequest)).map { dto in
+        remoteDataSource.fetchCurrentWeather(with: CurrentWeatherRequestDTO.from(weather: currentWeatherRequest)).map { dto in
             CurrentWeatherResponse(temp: dto.main.temp, main: dto.weather[0].main)
         }.catch { _ in Just(CurrentWeatherResponse(temp: 0, main: ""))
                 .eraseToAnyPublisher()

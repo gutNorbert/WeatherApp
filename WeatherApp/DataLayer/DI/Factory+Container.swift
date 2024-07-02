@@ -12,4 +12,8 @@ extension Container {
     var apiClient: Factory<APIClient> {
         Factory(self) { HTTPClient() }.scope(.singleton)
     }
+    
+    var currentWeatherRemoteDataSource: Factory<CurrentWeatherRemoteDataSourceProtocol> {
+        Factory(self) { CurrentWeatherRemoteDataSource() }
+    }
 }

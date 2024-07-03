@@ -7,16 +7,17 @@
 
 import SwiftUI
 
-struct MainView: View {
-    @State private var viewModel = MainViewModel()
+public struct MainView: View {
+    public init() {}
+//    @State private var viewModel = MainViewModel()
     
-    var body: some View {
+    public var body: some View {
         VStack {
             Image(systemName: "globe")
                 .imageScale(.large)
                 .foregroundStyle(.tint)
                 .onTapGesture {
-                    viewModel.getCurrentWeather()
+//                    viewModel.getCurrentWeather()
                 }
             Text("Hello, world!")
         }

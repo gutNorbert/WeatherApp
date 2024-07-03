@@ -7,11 +7,11 @@
 
 import Foundation
 import Observation
-import DomainLayer
 
 @Observable
 class MainViewModel {
     func getCurrentWeather() {
-        GetASD.asd()
+//        GetASD.asd()
+        
     }
 }

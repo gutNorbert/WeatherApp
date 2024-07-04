@@ -45,9 +45,6 @@ fastlane/readme.md
 *.pbxuser
 *.perspectivev3
 
-# Asset Catalog
-*.xcassets
-
 # Playgrounds
 timeline.xctimeline
 playground.xcworkspace
@@ -57,6 +54,7 @@ playground.xcworkspace
 *.iml
 *.ipr
 *.iws
+*.app
 
 # SwiftPM
 Packages/

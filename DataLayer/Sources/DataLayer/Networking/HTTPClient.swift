@@ -8,19 +8,26 @@
 import Foundation
 import Combine
 
-protocol APIClient {
+public protocol APIClient {
     func sendRequest<T: Decodable>(endpoint: Endpoint,
                                    responseModel: T.Type,
                                    queries: [URLQueryItem]?) -> Future<T, RequestError>
 }
 
-final class HTTPClient: APIClient {
+public final class HTTPClient: APIClient {
     private var cancellables = Set<AnyCancellable>()
     private let jsonDecoder = JSONDecoder()
+    private let session: URLSession
     
-    func sendRequest<T: Decodable>(endpoint: Endpoint,
-                                   responseModel: T.Type,
-                                   queries: [URLQueryItem]? = nil) -> Future<T, RequestError> {
+    public init() {
+        let configuration = URLSessionConfiguration.default
+        let delegate = CustomSessionDelegate()
+        self.session = URLSession(configuration: configuration, delegate: delegate, delegateQueue: nil)
+    }
+    
+    public func sendRequest<T: Decodable>(endpoint: Endpoint,
+                                          responseModel: T.Type,
+                                          queries: [URLQueryItem]? = nil) -> Future<T, RequestError> {
         jsonDecoder.keyDecodingStrategy = .convertFromSnakeCase
         
         return Future<T, RequestError> { [weak self] promise in
@@ -28,7 +35,7 @@ final class HTTPClient: APIClient {
                   let self = self
             else { return promise(.failure(RequestError.invalidURL)) }
             
-            URLSession.shared.dataTaskPublisher(for: url)
+            self.session.dataTaskPublisher(for: url)
                 .tryMap { (data, response) -> Data in
                     guard let httpResponse = response as? HTTPURLResponse
                     else { throw RequestError.responseError }
@@ -41,13 +48,17 @@ final class HTTPClient: APIClient {
                     }
                 }
                 .decode(type: T.self, decoder: self.jsonDecoder)
-                .sink(receiveCompletion: { (completion) in
-                    promise(.failure(.decode)) },
-                      receiveValue: { promise(.success($0)) })
+                .sink(receiveCompletion: { completion in
+                    switch completion {
+                    case .finished:
+                        break
+                    case .failure(let error):
+                        promise(.failure(.decode))
+                    }
+                }, receiveValue: { promise(.success($0)) })
                 .store(in: &self.cancellables)
         }
     }
-    
     
     private func setupURL(endpoint: Endpoint,
                           queries: [URLQueryItem]? = nil) -> URL? {

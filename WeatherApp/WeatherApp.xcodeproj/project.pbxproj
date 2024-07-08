@@ -34,12 +34,12 @@
 
 /* Begin PBXFileReference section */
 		09035F622C2D678300B938F8 /* WeatherAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherAppApp.swift; sourceTree = "<group>"; };
+		094BDA212C3C17DD00C59547 /* WeatherApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		094BDA222C3C17DD00C59547 /* WeatherAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WeatherAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		094BDA232C3C17DD00C59547 /* WeatherAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WeatherAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0960A57F2C3424210045820D /* DomainLayer */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = DomainLayer; path = ../DomainLayer; sourceTree = "<group>"; };
 		0960A5812C3428BB0045820D /* DataLayer */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = DataLayer; path = ../DataLayer; sourceTree = "<group>"; };
 		0960A5872C354B460045820D /* PresentationLayer */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = PresentationLayer; path = ../PresentationLayer; sourceTree = "<group>"; };
-		0960A59D2C3568D90045820D /* WeatherApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = WeatherApp.app; path = "/Users/ngutpinter/Documents/Projects/Weather/WeatherApp/build/Debug-iphoneos/WeatherApp.app"; sourceTree = "<absolute>"; };
-		0960A59E2C3568D90045820D /* WeatherAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = WeatherAppTests.xctest; path = "/Users/ngutpinter/Documents/Projects/Weather/WeatherApp/build/Debug-iphoneos/WeatherAppTests.xctest"; sourceTree = "<absolute>"; };
-		0960A59F2C3568D90045820D /* WeatherAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = WeatherAppUITests.xctest; path = "/Users/ngutpinter/Documents/Projects/Weather/WeatherApp/build/Debug-iphoneos/WeatherAppUITests.xctest"; sourceTree = "<absolute>"; };
 		0960A5A12C358C030045820D /* DI+Presentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DI+Presentation.swift"; sourceTree = "<group>"; };
 		098D93E12C33FE53006CBB60 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -80,6 +80,9 @@
 				0960A5812C3428BB0045820D /* DataLayer */,
 				0960A57F2C3424210045820D /* DomainLayer */,
 				09035F612C2D678300B938F8 /* WeatherApp */,
+				094BDA212C3C17DD00C59547 /* WeatherApp.app */,
+				094BDA222C3C17DD00C59547 /* WeatherAppTests.xctest */,
+				094BDA232C3C17DD00C59547 /* WeatherAppUITests.xctest */,
 			);
 			sourceTree = "<group>";
 		};
@@ -140,7 +143,7 @@
 				0960A5882C354EF40045820D /* PresentationLayer */,
 			);
 			productName = WeatherApp;
-			productReference = 0960A59D2C3568D90045820D /* WeatherApp.app */;
+			productReference = 094BDA212C3C17DD00C59547 /* WeatherApp.app */;
 			productType = "com.apple.product-type.application";
 		};
 		09035F6E2C2D678400B938F8 /* WeatherAppTests */ = {
@@ -158,7 +161,7 @@
 			);
 			name = WeatherAppTests;
 			productName = WeatherAppTests;
-			productReference = 0960A59E2C3568D90045820D /* WeatherAppTests.xctest */;
+			productReference = 094BDA222C3C17DD00C59547 /* WeatherAppTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		09035F782C2D678400B938F8 /* WeatherAppUITests */ = {
@@ -176,7 +179,7 @@
 			);
 			name = WeatherAppUITests;
 			productName = WeatherAppUITests;
-			productReference = 0960A59F2C3568D90045820D /* WeatherAppUITests.xctest */;
+			productReference = 094BDA232C3C17DD00C59547 /* WeatherAppUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */

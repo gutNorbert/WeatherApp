@@ -8,6 +8,6 @@
 import Foundation
 import Combine
 
-protocol CurrentWeatherRemoteDataSourceProtocol {
+public protocol CurrentWeatherRemoteDataSourceProtocol {
     func fetchCurrentWeather(with request: CurrentWeatherRequestDTO) -> Future<CurrentWeatherResponseDTO, RequestError>
 }

@@ -6,21 +6,20 @@
 //
 
 import Foundation
-//import Factory
 import Combine
-//import DomainLayer
 
-public class CurrentWeatherRemoteDataSource {
-//    private let apiClient = Container.shared.apiClient.resolve()
+public class CurrentWeatherRemoteDataSource: CurrentWeatherRemoteDataSourceProtocol {
+    private let apiClient: APIClient
     
-    public static func asd() {
+    public init(apiClient: APIClient) {
+        self.apiClient = apiClient
     }
     
-//    public func fetchCurrentWeather(with request: CurrentWeatherRequestDTO) -> Future<CurrentWeatherResponseDTO, RequestError> {
-//        apiClient.sendRequest(endpoint: WeatherEndpoint.currentWeather,
-//                              responseModel: CurrentWeatherResponseDTO.self,
-//                              queries: [URLQueryItem(name: "lat", value: "44.34"),
-//                                        URLQueryItem(name: "lon", value: "10.99")])
-        
-//    }
+    public func fetchCurrentWeather(with request: CurrentWeatherRequestDTO) -> Future<CurrentWeatherResponseDTO, RequestError> {
+        apiClient.sendRequest(endpoint: WeatherEndpoint.currentWeather,
+                              responseModel: CurrentWeatherResponseDTO.self,
+                              queries: [URLQueryItem(name: "lat", value: "44.34"),
+                                        URLQueryItem(name: "lon", value: "10.99"),
+                                        URLQueryItem(name: "appid", value: "970c3e370ab8a006ca61dc609fd75f6c")])
+    }
 }

@@ -8,7 +8,7 @@
 import Foundation
 import DomainLayer
 
-struct CurrentWeatherResponseDTO: Decodable {
+public struct CurrentWeatherResponseDTO: Decodable {
     public let weather: [Weather]
     public let main: Main
 }

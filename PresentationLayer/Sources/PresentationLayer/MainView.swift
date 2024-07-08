@@ -7,9 +7,14 @@
 
 import SwiftUI
 
-public struct MainView: View {
-    public init() {}
-//    @State private var viewModel = MainViewModel()
+public protocol MainvViewProtocol: View {}
+
+public struct MainView: MainvViewProtocol {
+    public init(viewModel: any MainViewModelProtocol) {
+        self.viewModel = viewModel
+    }
+    
+    @State public var viewModel: any MainViewModelProtocol
     
     public var body: some View {
         VStack {
@@ -26,5 +31,5 @@ public struct MainView: View {
 }
 
 #Preview {
-    MainView()
+    MainView(viewModel: MainViewModel())
 }

@@ -8,8 +8,14 @@
 import Foundation
 import Observation
 
+public protocol MainViewModelProtocol: ObservableObject {
+    
+}
+
 @Observable
-class MainViewModel {
+public class MainViewModel: MainViewModelProtocol {
+    public init() {}
+    
     func getCurrentWeather() {
 //        GetASD.asd()
         

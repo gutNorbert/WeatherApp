@@ -7,12 +7,17 @@
 
 import SwiftUI
 import PresentationLayer
+import Factory
 
 @main
 struct WeatherAppApp: App {
     var body: some Scene {
         WindowGroup {
-            MainView()
+            if let mainView = Container.shared.mainView.resolve() as? MainView {
+                AnyView(mainView)
+            } else {
+                Text("Error loading view")
+            }
         }
     }
 }

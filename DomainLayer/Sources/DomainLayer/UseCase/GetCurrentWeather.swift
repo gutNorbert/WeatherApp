@@ -11,7 +11,7 @@ import Combine
 public class GetCurrentWeather: UseCase {
     private let repository: CurrentWeatherRepositoryProtocol
     
-    init(repository: CurrentWeatherRepositoryProtocol) {
+    public init(repository: CurrentWeatherRepositoryProtocol) {
         self.repository = repository
     }
     
@@ -21,8 +21,14 @@ public class GetCurrentWeather: UseCase {
 }
 
 
-public class GetASD {
-    public static func asd() {
-        
+public class UseCaseWrapper<Request, Response>: UseCase {
+    private let _execute: (Request) -> Response
+    
+    public init<U: UseCase>(_ useCase: U) where U.Request == Request, U.Response == Response {
+        self._execute = useCase.execute
+    }
+    
+    public func execute(request: Request) -> Response {
+        return _execute(request)
     }
 }

@@ -22,7 +22,7 @@ public struct MainView: MainvViewProtocol {
                 .imageScale(.large)
                 .foregroundStyle(.tint)
                 .onTapGesture {
-//                    viewModel.getCurrentWeather()
+                    viewModel.currentWeather()
                 }
             Text("Hello, world!")
         }
@@ -31,5 +31,5 @@ public struct MainView: MainvViewProtocol {
 }
 
 #Preview {
-    MainView(viewModel: MainViewModel())
+    MainView(viewModel: MainViewModelPreview())
 }

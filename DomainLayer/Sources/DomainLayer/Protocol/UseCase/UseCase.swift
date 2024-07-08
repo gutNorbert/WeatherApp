@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol UseCase {
+public protocol UseCase {
     associatedtype Request
     associatedtype Response
     

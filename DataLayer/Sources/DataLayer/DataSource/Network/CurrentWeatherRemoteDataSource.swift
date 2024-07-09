@@ -18,8 +18,9 @@ public class CurrentWeatherRemoteDataSource: CurrentWeatherRemoteDataSourceProto
     public func fetchCurrentWeather(with request: CurrentWeatherRequestDTO) -> Future<CurrentWeatherResponseDTO, RequestError> {
         apiClient.sendRequest(endpoint: WeatherEndpoint.currentWeather,
                               responseModel: CurrentWeatherResponseDTO.self,
-                              queries: [URLQueryItem(name: "lat", value: "44.34"),
-                                        URLQueryItem(name: "lon", value: "10.99"),
-                                        URLQueryItem(name: "appid", value: "970c3e370ab8a006ca61dc609fd75f6c")])
+                              queries: [URLQueryItem(name: "lat", value: "47.1625"),
+                                        URLQueryItem(name: "lon", value: "19.5033"),
+                                        URLQueryItem(name: "appid", value: "970c3e370ab8a006ca61dc609fd75f6c"),
+                                        URLQueryItem(name: "units", value: "metric")])
     }
 }

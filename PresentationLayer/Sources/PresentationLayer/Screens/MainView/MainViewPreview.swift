@@ -6,9 +6,12 @@
 //
 
 import Foundation
+import DomainLayer
 
 public class MainViewModelPreview: MainViewModelProtocol {
-    public func currentWeather() {}
+    public var state: ViewState
     
-    public init() {}
+    public init(state: ViewState) {
+        self.state = state
+    }
 }

@@ -11,30 +11,47 @@ import DomainLayer
 import Combine
 
 public protocol MainViewModelProtocol: ObservableObject {
-    func currentWeather()
+    var state: ViewState { get }
 }
 
 @Observable
 public class MainViewModel: MainViewModelProtocol {
+    //MARK: Dependencies
+    
+    @ObservationIgnored
     private let getCurrentWeather: UseCaseWrapper<CurrentWeatherRequest, AnyPublisher<CurrentWeatherResponse, Never>>
+    
+    //MARK: Observed properties
+    
     private var cancellables = Set<AnyCancellable>()
+    public var state: ViewState = .loading
+    
+    //MARK: Init
     
     public init(getCurrentWeather: UseCaseWrapper<CurrentWeatherRequest, AnyPublisher<CurrentWeatherResponse, Never>>) {
         self.getCurrentWeather = getCurrentWeather
+        currentWeather()
     }
     
-    public func currentWeather() {
+    //MARK: Private functions
+    
+    private func currentWeather() {
         getCurrentWeather.execute(request: CurrentWeatherRequest(latitude: 25.2, longitude: 22.2))
-            .sink { completion in
-                switch completion {
-                case .finished:
-                    print("Successfully received weather data.")
-                case .failure(let error):
-                    print("Failed to fetch weather data: \(error.localizedDescription)")
-                }
-            } receiveValue: { weather in
-                print(weather.main)
-            }.store(in: &cancellables)
-
+            .sink ( receiveValue: { [weak self] weather in
+                self?.send(event: .succeed(weather))
+            }).store(in: &cancellables)
+    }
+    
+    private func send(event: ViewEvent) {
+        switch (state, event) {
+        case (.loading, .succeed(let weather)):
+            state = .success(weather)
+        case (.loading, .fail(let error)):
+            state = .failure(error)
+        case (.success, .load), (.failure, .load):
+            state = .loading
+        default:
+            break
+        }
     }
 }

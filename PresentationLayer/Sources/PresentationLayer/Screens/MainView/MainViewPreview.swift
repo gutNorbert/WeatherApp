@@ -9,11 +9,9 @@ import Foundation
 import DomainLayer
 
 public class MainViewModelPreview: MainViewModelProtocol {
-    public var currentWeatherData: CurrentWeatherResponse?
+    public var state: ViewState
     
-    public func currentWeather() {}
-    
-    public init() {
-        currentWeatherData = CurrentWeatherResponse(temp: 26, main: "Clear")
+    public init(state: ViewState) {
+        self.state = state
     }
 }

@@ -12,6 +12,7 @@ class CustomSessionDelegate: NSObject, URLSessionDelegate {
         if challenge.protectionSpace.authenticationMethod == NSURLAuthenticationMethodServerTrust,
            let serverTrust = challenge.protectionSpace.serverTrust {
             let credential = URLCredential(trust: serverTrust)
+            // For development purposes, accept the self-signed certificate
             completionHandler(.useCredential, credential)
         } else {
             completionHandler(.performDefaultHandling, nil)

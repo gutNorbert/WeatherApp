@@ -6,6 +6,8 @@
 //
 
 import SwiftUI
+import Lottie
+import DomainLayer
 
 public protocol MainvViewProtocol: View {}
 
@@ -17,16 +19,22 @@ public struct MainView: MainvViewProtocol {
     @State public var viewModel: any MainViewModelProtocol
     
     public var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-                .onTapGesture {
-                    viewModel.currentWeather()
+        ZStack {
+            LottieView(animation: .named("nature_background",
+                                         bundle: Bundle.module))
+                .playing()
+                .aspectRatio(contentMode: .fill)
+                .ignoresSafeArea()
+            VStack {
+                if let currentWeatherData = viewModel.currentWeatherData {
+                    CardView(title: "Current weather",
+                             descriptionTop: "Current celsius is: \(currentWeatherData.temp)",
+                             descriptionBottom: "Desc")
+                    Spacer()
+                   
                 }
-            Text("Hello, world!")
+            }.padding(.top, 30)
         }
-        .padding()
     }
 }
 

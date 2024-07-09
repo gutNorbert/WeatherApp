@@ -20,6 +20,7 @@ public class CurrentWeatherRemoteDataSource: CurrentWeatherRemoteDataSourceProto
                               responseModel: CurrentWeatherResponseDTO.self,
                               queries: [URLQueryItem(name: "lat", value: "44.34"),
                                         URLQueryItem(name: "lon", value: "10.99"),
-                                        URLQueryItem(name: "appid", value: "970c3e370ab8a006ca61dc609fd75f6c")])
+                                        URLQueryItem(name: "appid", value: "970c3e370ab8a006ca61dc609fd75f6c"),
+                                        URLQueryItem(name: "units", value: "metric")])
     }
 }

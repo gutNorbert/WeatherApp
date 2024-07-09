@@ -6,9 +6,14 @@
 //
 
 import Foundation
+import DomainLayer
 
 public class MainViewModelPreview: MainViewModelProtocol {
+    public var currentWeatherData: CurrentWeatherResponse?
+    
     public func currentWeather() {}
     
-    public init() {}
+    public init() {
+        currentWeatherData = CurrentWeatherResponse(temp: 26, main: "Clear")
+    }
 }

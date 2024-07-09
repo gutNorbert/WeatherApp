@@ -6,8 +6,8 @@ import PackageDescription
 let package = Package(
     name: "PresentationLayer",
     platforms: [
-            .iOS(.v17)
-        ],
+        .iOS(.v17)
+    ],
     products: [
         // Products define the executables and libraries a package produces, making them visible to other packages.
         .library(
@@ -15,14 +15,20 @@ let package = Package(
             targets: ["PresentationLayer"]),
     ],
     dependencies: [
-        .package(path: "../DomainLayer")
+        .package(path: "../DomainLayer"),
+        .package(url: "https://github.com/airbnb/lottie-spm.git", from: "4.4.3")
     ],
     targets: [
             .target(
                 name: "PresentationLayer",
-                dependencies: ["DomainLayer"]),
+                dependencies: ["DomainLayer", .product(name: "Lottie", package: "lottie-spm")],
+                resources: [
+                    .process("Resources")
+                ]
+            ),
             .testTarget(
                 name: "PresentationLayerTests",
                 dependencies: ["PresentationLayer"]),
         ]
+    
 )

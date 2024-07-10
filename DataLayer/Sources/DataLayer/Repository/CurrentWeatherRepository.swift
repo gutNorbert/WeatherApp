@@ -18,8 +18,8 @@ public struct CurrentWeatherRepository: CurrentWeatherRepositoryProtocol {
     
     public func getCurrentWeather(currentWeatherRequest: CurrentWeatherRequest) -> AnyPublisher<CurrentWeatherResponse, Never> {
         remoteDataSource.fetchCurrentWeather(with: CurrentWeatherRequestDTO.from(weather: currentWeatherRequest)).map { dto in
-            CurrentWeatherResponse(temp: dto.main.temp, main: dto.weather[0].main)
-        }.catch { _ in Just(CurrentWeatherResponse(temp: 0, main: ""))
+            CurrentWeatherResponse.from(response: dto)
+        }.catch { _ in Just(CurrentWeatherResponse(temp: 35, main: "", tempMin: 32, tempMax: 40, location: ""))
                 .eraseToAnyPublisher()
         }
         .eraseToAnyPublisher()

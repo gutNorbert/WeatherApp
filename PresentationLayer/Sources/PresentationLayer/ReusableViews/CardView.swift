@@ -15,19 +15,7 @@ struct CardView: View {
     
     var body: some View {
         VStack(alignment: .center) {
-
-            Text(title)
-                .font(.headline)
-                .padding()
-            Text(descriptionTop)
-                .font(.headline)
-                .padding()
-
-            Text(descriptionBottom)
-                .font(.subheadline)
-                .foregroundColor(.secondary)
-                .padding(.horizontal)
-                .padding(.bottom, 10)
+//            CurrentWeatherTopView(location: "Budapest", temperature: "32", weatherDescription: "asd", highLowTemperature: "32", feelsLikeTemperature: "22")
         }
         .background(Color.white)
         .cornerRadius(15)

@@ -11,6 +11,7 @@ import DomainLayer
 public struct CurrentWeatherResponseDTO: Decodable {
     public let weather: [Weather]
     public let main: Main
+    public let name: String
 }
 
 public struct Main: Decodable {
@@ -31,6 +32,10 @@ public struct Weather: Decodable {
 
 extension CurrentWeatherResponse {
     static func from(response: CurrentWeatherResponseDTO) -> Self {
-        return CurrentWeatherResponse(temp: response.main.temp, main: response.weather[0].main)
+        return CurrentWeatherResponse(temp: response.main.temp,
+                                      main: response.weather.first?.main ?? "",
+                                      tempMin: response.main.tempMin,
+                                      tempMax: response.main.tempMax,
+                                      location: response.name)
     }
 }

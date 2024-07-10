@@ -10,25 +10,19 @@ import Foundation
 public struct CurrentWeatherResponse {
     public let temp: Double
     public let main: String
+    public let tempMin: Double
+    public let tempMax: Double
+    public let location: String
     
-    public init(temp: Double, main: String) {
+    public init(temp: Double,
+                main: String,
+                tempMin: Double,
+                tempMax: Double,
+                location: String) {
         self.temp = temp
         self.main = main
+        self.tempMin = tempMin
+        self.tempMax = tempMax
+        self.location = location
     }
-}
-
-public struct Main {
-    let temp: Double
-    let feelsLike: Double
-    let tempMin: Double
-    let tempMax: Double
-    let pressure: Int
-    let humidity: Int
-}
-
-public struct Weather {
-    let id: Int
-    let main: String
-    let description: String
-    let icon: String
 }

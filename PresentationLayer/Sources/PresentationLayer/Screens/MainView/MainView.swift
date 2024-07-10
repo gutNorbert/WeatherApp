@@ -22,7 +22,6 @@ public struct MainView: MainvViewProtocol {
         ZStack {
             backgroundView
             contentView
-                .padding(.top, 30)
         }
     }
     
@@ -33,15 +32,21 @@ public struct MainView: MainvViewProtocol {
             .ignoresSafeArea()
     }
     
+    private var loadingView: some View {
+        LottieView(animation: .named("loading", bundle: Bundle.module))
+            .playing(loopMode: .loop)
+            .aspectRatio(contentMode: .fill)
+            .ignoresSafeArea()
+    }
+    
     private var contentView: some View {
         VStack {
             switch viewModel.state {
             case .loading:
-                Text("Loading...")
+                loadingView
+                    .frame(width: 200, height: 200, alignment: .center)
             case .success(let weatherData):
-                CardView(title: "Current Position",
-                         descriptionTop: "Current celsius is: \(weatherData.temp) °",
-                         descriptionBottom: "Desc")
+                CurrentWeatherTopView(weather: weatherData)
                 Spacer()
             case .failure(let error):
                 Text("Error: \(error)")
@@ -55,5 +60,5 @@ public struct MainView: MainvViewProtocol {
 }
 
 #Preview {
-    MainView(viewModel: MainViewModelPreview(state: .success(CurrentWeatherResponse(temp: 32.2, main: "")))).previewDisplayName("Loaded")
+    MainView(viewModel: MainViewModelPreview(state: .success(CurrentWeatherResponse(temp: 35, main: "Cloudy", tempMin: 22, tempMax: 40, location: "Budapest")))).previewDisplayName("Loaded")
 }

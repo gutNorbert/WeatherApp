@@ -12,6 +12,9 @@
 		0960A5862C34292F0045820D /* DomainLayer in Frameworks */ = {isa = PBXBuildFile; productRef = 0960A5852C34292F0045820D /* DomainLayer */; };
 		0960A5892C354EF40045820D /* PresentationLayer in Frameworks */ = {isa = PBXBuildFile; productRef = 0960A5882C354EF40045820D /* PresentationLayer */; };
 		0960A5A22C358C030045820D /* DI+Presentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0960A5A12C358C030045820D /* DI+Presentation.swift */; };
+		097A79ED2C400E73004D82C1 /* DI+Domain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097A79EC2C400E73004D82C1 /* DI+Domain.swift */; };
+		097A79EF2C400EF8004D82C1 /* DI+Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097A79EE2C400EF8004D82C1 /* DI+Services.swift */; };
+		097A79F22C401083004D82C1 /* DI+Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097A79F12C401083004D82C1 /* DI+Data.swift */; };
 		098D93B02C33FAA9006CBB60 /* Factory in Frameworks */ = {isa = PBXBuildFile; productRef = 098D93AF2C33FAA9006CBB60 /* Factory */; };
 /* End PBXBuildFile section */
 
@@ -41,6 +44,9 @@
 		0960A5812C3428BB0045820D /* DataLayer */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = DataLayer; path = ../DataLayer; sourceTree = "<group>"; };
 		0960A5872C354B460045820D /* PresentationLayer */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = PresentationLayer; path = ../PresentationLayer; sourceTree = "<group>"; };
 		0960A5A12C358C030045820D /* DI+Presentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DI+Presentation.swift"; sourceTree = "<group>"; };
+		097A79EC2C400E73004D82C1 /* DI+Domain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DI+Domain.swift"; sourceTree = "<group>"; };
+		097A79EE2C400EF8004D82C1 /* DI+Services.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DI+Services.swift"; sourceTree = "<group>"; };
+		097A79F12C401083004D82C1 /* DI+Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DI+Data.swift"; sourceTree = "<group>"; };
 		098D93E12C33FE53006CBB60 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -116,6 +122,9 @@
 			isa = PBXGroup;
 			children = (
 				0960A5A12C358C030045820D /* DI+Presentation.swift */,
+				097A79EC2C400E73004D82C1 /* DI+Domain.swift */,
+				097A79EE2C400EF8004D82C1 /* DI+Services.swift */,
+				097A79F12C401083004D82C1 /* DI+Data.swift */,
 			);
 			path = DI;
 			sourceTree = "<group>";
@@ -257,7 +266,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				097A79EF2C400EF8004D82C1 /* DI+Services.swift in Sources */,
+				097A79ED2C400E73004D82C1 /* DI+Domain.swift in Sources */,
 				0960A5A22C358C030045820D /* DI+Presentation.swift in Sources */,
+				097A79F22C401083004D82C1 /* DI+Data.swift in Sources */,
 				09035F632C2D678300B938F8 /* WeatherAppApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

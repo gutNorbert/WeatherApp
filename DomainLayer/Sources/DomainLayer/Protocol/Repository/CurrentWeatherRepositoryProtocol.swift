@@ -9,6 +9,5 @@ import Foundation
 import Combine
 
 public protocol CurrentWeatherRepositoryProtocol {
-    
     func getCurrentWeather(currentWeatherRequest: CurrentWeatherRequest) -> AnyPublisher<CurrentWeatherResponse, Never>
 }

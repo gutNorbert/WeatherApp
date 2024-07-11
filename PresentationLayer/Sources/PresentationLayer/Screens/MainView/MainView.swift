@@ -32,19 +32,11 @@ public struct MainView: MainvViewProtocol {
             .ignoresSafeArea()
     }
     
-    private var loadingView: some View {
-        LottieView(animation: .named("loading", bundle: Bundle.module))
-            .playing(loopMode: .loop)
-            .aspectRatio(contentMode: .fill)
-            .ignoresSafeArea()
-    }
-    
     private var contentView: some View {
         VStack {
             switch viewModel.state {
             case .loading:
-                loadingView
-                    .frame(width: 200, height: 200, alignment: .center)
+                LoadingAnimation()
             case .success(let weatherData):
                 CurrentWeatherTopView(weather: weatherData)
                 Spacer()

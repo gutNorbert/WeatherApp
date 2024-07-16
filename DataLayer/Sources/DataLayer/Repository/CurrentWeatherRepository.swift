@@ -16,12 +16,13 @@ public struct CurrentWeatherRepository: CurrentWeatherRepositoryProtocol {
         self.remoteDataSource = remoteDataSource
     }
     
-    public func getCurrentWeather(currentWeatherRequest: CurrentWeatherRequest) -> AnyPublisher<CurrentWeatherResponse, Never> {
+    public func getCurrentWeather(currentWeatherRequest: CurrentWeatherRequest) -> AnyPublisher<CurrentWeatherResponse, UseCaseError> {
         remoteDataSource.fetchCurrentWeather(with: CurrentWeatherRequestDTO.from(weather: currentWeatherRequest)).map { dto in
             CurrentWeatherResponse.from(response: dto)
-        }.catch { _ in Just(CurrentWeatherResponse(temp: 35, main: "", tempMin: 32, tempMax: 40, location: ""))
-                .eraseToAnyPublisher()
         }
+        .mapError({ repositoryError in
+                .repositoryError(repositoryError)
+        })
         .eraseToAnyPublisher()
     }
 }

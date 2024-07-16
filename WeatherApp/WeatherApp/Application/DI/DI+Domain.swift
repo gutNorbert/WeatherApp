@@ -12,7 +12,7 @@ import CoreLocation
 
 extension Container {
     //MARK: UseCase
-    var getCurrentWeather: Factory<UseCaseWrapper<CurrentWeatherRequest, AnyPublisher<CurrentWeatherResponse, Never>>> {
+    var getCurrentWeather: Factory<UseCaseWrapper<CurrentWeatherRequest, AnyPublisher<CurrentWeatherResponse, UseCaseError>>> {
         self { UseCaseWrapper(GetCurrentWeather(repository: self.currentWeatherRepository()))}
     }
     
@@ -20,7 +20,15 @@ extension Container {
         self { UseCaseWithoutRequestWrapper(GetCurrentLocation(repository: self.locationRepository()))}
     }
     
-    var requestLocation: Factory<UseCaseWithoutRequestAndResponse> {
-        self { RequestLocation(repository: self.locationRepository())}
+    var locationAuthorizationStatus: Factory<UseCaseWithoutRequestWrapper<CurrentValueSubject<CLAuthorizationStatus, Never>>> {
+        self { UseCaseWithoutRequestWrapper(CheckLocationAuthorizationStatus(repository: self.locationRepository()))}
+    }
+    
+    var startUpdatingLocation: Factory<UseCaseWithoutRequestAndResponse> {
+        self { StartUpdatingLocation(repository: self.locationRepository())}
+    }
+    
+    var requestLocationAuthorization: Factory<UseCaseWithoutRequestAndResponse> {
+        self { RequestLocationAuthorization(repository: self.locationRepository())}
     }
 }

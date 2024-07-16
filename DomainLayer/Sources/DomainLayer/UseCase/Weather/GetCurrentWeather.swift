@@ -15,7 +15,7 @@ public class GetCurrentWeather: UseCase {
         self.repository = repository
     }
     
-    public func execute(request: CurrentWeatherRequest) -> AnyPublisher<CurrentWeatherResponse, Never> {
+    public func execute(request: CurrentWeatherRequest) -> AnyPublisher<CurrentWeatherResponse, UseCaseError> {
         repository.getCurrentWeather(currentWeatherRequest: request)
     }
 }

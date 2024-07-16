@@ -7,7 +7,8 @@
 
 import Foundation
 import Combine
+import DomainLayer
 
 public protocol CurrentWeatherRemoteDataSourceProtocol {
-    func fetchCurrentWeather(with request: CurrentWeatherRequestDTO) -> Future<CurrentWeatherResponseDTO, RequestError>
+    func fetchCurrentWeather(with request: CurrentWeatherRequestDTO) -> AnyPublisher<CurrentWeatherResponseDTO, RepositoryError>
 }

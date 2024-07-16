@@ -7,11 +7,12 @@
 
 import Foundation
 import Combine
+import DomainLayer
 
 public protocol APIClient {
     func sendRequest<T: Decodable>(endpoint: Endpoint,
                                    responseModel: T.Type,
-                                   queries: [URLQueryItem]?) -> Future<T, RequestError>
+                                   queries: [URLQueryItem]?) -> Future<T, HTTPError>
 }
 
 public final class HTTPClient: APIClient {
@@ -27,24 +28,24 @@ public final class HTTPClient: APIClient {
     
     public func sendRequest<T: Decodable>(endpoint: Endpoint,
                                           responseModel: T.Type,
-                                          queries: [URLQueryItem]? = nil) -> Future<T, RequestError> {
+                                          queries: [URLQueryItem]? = nil) -> Future<T, HTTPError> {
         jsonDecoder.keyDecodingStrategy = .convertFromSnakeCase
         
-        return Future<T, RequestError> { [weak self] promise in
+        return Future<T, HTTPError> { [weak self] promise in
             guard let url = self?.setupURL(endpoint: endpoint, queries: queries),
-                  let self = self
-            else { return promise(.failure(RequestError.invalidURL)) }
+                  let self
+            else { return promise(.failure(HTTPError.invalidURL)) }
             
             self.session.dataTaskPublisher(for: url)
                 .tryMap { (data, response) -> Data in
                     guard let httpResponse = response as? HTTPURLResponse
-                    else { throw RequestError.responseError }
+                    else { throw HTTPError.responseError }
                     
                     switch httpResponse.statusCode {
                     case 200...299:
                         return data
                     default:
-                        throw RequestError.badResponse(statusCode: httpResponse.statusCode)
+                        throw HTTPError.badResponse(statusCode: httpResponse.statusCode)
                     }
                 }
                 .decode(type: T.self, decoder: self.jsonDecoder)
@@ -52,7 +53,7 @@ public final class HTTPClient: APIClient {
                     switch completion {
                     case .finished:
                         break
-                    case .failure(let error):
+                    case .failure(_):
                         promise(.failure(.decode))
                     }
                 }, receiveValue: { promise(.success($0)) })

@@ -19,8 +19,8 @@ extension Container {
     var mainViewModel: Factory<any MainViewModelProtocol> {
         self { MainViewModel(getCurrentWeather: self.getCurrentWeather(),
                              getCurrentLocation: self.getCurrentLocation(),
-                             requestLocation: self.requestLocation()) }
+                             locationAuthorizationStatus: self.locationAuthorizationStatus(),
+                             startUpdatingLocation: self.startUpdatingLocation(),
+                             requestLocationAuthorization: self.requestLocationAuthorization()) }
     }
-    
-  
 }

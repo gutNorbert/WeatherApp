@@ -12,4 +12,7 @@ import CoreLocation
 public protocol LocationRepositoryProtocol {
     func requestLocation()
     func getCurrentLocation() -> PassthroughSubject<CLLocation, Never>
+    func authorizationStatus() -> CurrentValueSubject<CLAuthorizationStatus, Never>
+    func requestAuthorization()
+    func startUpdatingLocation()
 }

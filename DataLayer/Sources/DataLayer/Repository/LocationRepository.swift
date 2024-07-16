@@ -24,4 +24,16 @@ public struct LocationRepository: LocationRepositoryProtocol {
     public func getCurrentLocation() -> PassthroughSubject<CLLocation, Never> {
         locationService.locationSubject
     }
+    
+    public func authorizationStatus() -> CurrentValueSubject<CLAuthorizationStatus, Never> {
+        locationService.authorizationStatusSubject
+    }
+    
+    public func requestAuthorization() {
+        locationService.requestAuthorization()
+    }
+    
+    public func startUpdatingLocation() {
+        locationService.startUpdatingLocation()
+    }
 }
